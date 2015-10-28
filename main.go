@@ -9,11 +9,13 @@ import (
 )
 
 func main() {
-	pPort := flag.String("p", "23000", "select port to listen on (default is 23000)")
-	listener, err := net.Listen("tcp", ":"+*pPort)
+	pPort := flag.Int("p", 23000, "select port to listen on")
+   flag.Parse()
+	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", *pPort))
 	if err != nil {
 		fmt.Println("Cannot listen: ", err)
 	} else {
+		fmt.Printf("listening on port %d\n", *pPort)
 		for {
 			con, err := listener.Accept()
 			if err != nil {
