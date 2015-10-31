@@ -10,7 +10,7 @@ import (
 
 func main() {
 	pPort := flag.Int("p", 23000, "select port to listen on")
-   flag.Parse()
+	flag.Parse()
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", *pPort))
 	if err != nil {
 		fmt.Println("Cannot listen: ", err)
